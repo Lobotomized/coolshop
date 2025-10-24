@@ -7,11 +7,21 @@ export interface Product {
   category: string;
 }
 
+export interface PorductsProduct { 
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  thumbnail: string;
+  category: string;
+  rating: number;
+}
+
 // Fetch products from dummyjson and map them to our Product interface
 export async function fetchProducts(): Promise<Product[]> {
   const res = await fetch('https://dummyjson.com/products');
   const data = await res.json();
-  return data.products.map((p: any) => ({
+  return data.products.map((p: PorductsProduct) => ({
     id: p.id,
     name: p.title,
     description: `Rating: ${p.rating}`,

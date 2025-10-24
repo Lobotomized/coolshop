@@ -3,20 +3,21 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/app/context/CartContext';
-import { getProductById } from '@/app/data/products';
+import { getProductById, Product } from '@/app/data/products';
 import { useEffect } from 'react';
 
 export default function AddToCartButton({ productId }: { productId: number }) {
   const router = useRouter();
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
-  const [product, setProduct] = useState<any>(null);
+  const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchProduct = async () => {
       const productData = await getProductById(productId);
-      setProduct(productData);
+      if(productData) setProduct(productData);
+      
     };
     fetchProduct();
   }, [productId]);
