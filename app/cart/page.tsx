@@ -82,7 +82,7 @@ export default function Cart() {
             <div className="mt-6">
               <button
                 onClick={() => router.push('/')}
-                className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                className="text-sm font-medium text-indigo-600 hover:text-indigo-500 cursor-pointer"
               >
                 ← Continue Shopping
               </button>
